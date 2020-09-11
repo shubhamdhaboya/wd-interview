@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Company;
 use Illuminate\Support\Facades\Session;
+use App\Notifications\CompanyCreated;
 
 class CompanyController extends Controller
 {
@@ -82,6 +83,7 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate(self::CONSTRAINTS);
+        $user = auth()->user();
 
         if ($request->hasFile('logo')) {
             $fileName = $request->logo->hashName();
@@ -90,8 +92,9 @@ class CompanyController extends Controller
             $data['logo'] = $fullPath;
         }
 
-        Company::create($data);
+        $company = Company::create($data);
         Session::flash('alert-success', "Success!");
+        $user->notify(new CompanyCreated($company));
         return \Redirect::back();
     }
 
@@ -103,7 +106,11 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        $company = Company::find($id);
+        unset($company['id']);
+        unset($company['created_at']);
+        unset($company['updated_at']);
+        return view('company.show', ['company' => $company->toArray()]);
     }
 
     /**

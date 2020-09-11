@@ -14,4 +14,9 @@ class Company extends Model
     protected $fillable = [
         'name', 'logo', 'email', 'website'
     ];
+
+    public function getFullDetailsAttribute()
+    {
+    	return $this->name . '('.$this->email.')';
+    }
 }

@@ -48192,11 +48192,12 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 jQuery(document).ready(function ($) {
+  var url = $('.data-table').data('url');
   $('.data-table').DataTable({
     searching: false,
     processing: true,
     serverSide: true,
-    ajax: "/companies/json"
+    ajax: url
   });
   jQuery('#logo').on('change', function (e) {
     if (this.files[0]) {

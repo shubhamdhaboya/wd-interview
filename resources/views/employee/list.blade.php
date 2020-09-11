@@ -1,20 +1,21 @@
 @extends('adminlte::page')
 
-@section('title', 'Companies')
+@section('title', 'Employees')
 
 @section('content_header')
-    <h1>Companies</h1>
+    <h1>Employees</h1>
 @stop
 
 @section('content')
-	<table class="data-table" data-url="/companies/json">
+	<table class="data-table" data-url="employees/json">
 		<thead>
 			<tr>
 				<th>Id</th>
-				<th>Name</th>
-				<th>Logo</th>
+				<th>First name</th>
+				<th>Last name</th>
+				<th>Company name</th>
 				<th>Email</th>
-				<th>Website</th>
+				<th>Phone</th>
 				<th>Action</th>
 			</tr>
 		</thead>

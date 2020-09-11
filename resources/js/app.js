@@ -1,11 +1,13 @@
 require('./bootstrap');
 
 jQuery(document).ready(function ($) {
+	const url = $('.data-table').data('url');
+
 	$('.data-table').DataTable({
 		searching: false,
 		processing: true,
 		serverSide: true,
-		ajax: "/companies/json"
+		ajax: url
 	});
 
 	jQuery('#logo').on('change', function (e) {
