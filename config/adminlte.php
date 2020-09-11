@@ -250,6 +250,20 @@ return [
                 ],
             ],
         ],
+        [
+            'text'    => 'Employee',
+            'icon'    => 'fas fa-fw fa-user',
+            'submenu' => [
+                [
+                    'text' => 'List',
+                    'url'  => '/employees',
+                ],
+                [
+                    'text'    => 'Create',
+                    'url'     => '/employees/create',
+                ],
+            ],
+        ],
     ],
 
     /*

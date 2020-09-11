@@ -21,4 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('companies/json', 'CompanyController@listContent');
+
 Route::resource('companies', 'CompanyController');
+Route::resource('employees', 'EmployeeController');
